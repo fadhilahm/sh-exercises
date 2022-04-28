@@ -1,0 +1,5 @@
+this file is called muyfile.txt and we are using it as an example input.
+hello
+gday
+bonjour
+hola
