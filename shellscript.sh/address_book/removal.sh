@@ -48,7 +48,8 @@ remove_handle_multiple_filter_results()
         INDEX=`expr "$INDEX" + 1`
     done
 
-    VALIDATION_REGEX="[1-${INDEX}]"
+    MAX_INDEX=`expr "${INDEX}" - 1`
+    VALIDATION_REGEX="[1-${MAX_INDEX}]"
     while : ; do
     echo -n "Your choice: "
     SELECTED_CHOICE=""

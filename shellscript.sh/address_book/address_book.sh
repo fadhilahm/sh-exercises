@@ -4,6 +4,7 @@
 . search.sh
 . add.sh
 . removal.sh
+. edit.sh
 
 ### Functions
 show_options()

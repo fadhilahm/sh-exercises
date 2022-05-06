@@ -16,6 +16,13 @@ entries_render_one() {
   IFS="$OLD_IFS"
 }
 
+entries_parse_one() {
+  OLD_IFS="${IFS}"
+  IFS=:
+  read FIRST_NAME LAST_NAME EMAIL PHONE <<< "${1}"
+  IFS="${OLD_IFS}"
+}
+
 entries_show_all()
 {
   echo "Here's all the currently stored entries:"
