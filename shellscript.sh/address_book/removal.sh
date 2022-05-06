@@ -9,6 +9,7 @@ remove_select()
     remove_filter
     remove_handle_filter_results
     remove_confirmation
+    remove_entry
 }
 
 remove_ask_input() 
@@ -77,10 +78,27 @@ remove_confirmation()
     entries_render_one "${SELECTED_ENTRY}" 1
 }
 
+remove_entry()
+{
+    NEW_ENTRIES=""
+    for ENTRY in $ENTRIES; do
+        if [ "${ENTRY}" = "${SELECTED_ENTRY}" ]; then
+            :
+        else
+            if [ -n "${NEW_ENTRIES}" ]; then
+                NEW_ENTRIES="${NEW_ENTRIES} ${ENTRY}"
+            else
+                NEW_ENTRIES="${ENTRY}"
+            fi
+        fi
+    done
+    ENTRIES="${NEW_ENTRIES}"
+}
+
 ## Main function.
 remove()
 {
     SELECTED_ENTRY=""
     remove_select
-
+    remove_entry
 }
