@@ -29,9 +29,28 @@ entries_show_all()
 
 entries_add()
 {
-  if [ -n "$ENTRIES" ]; then
-    ENTRIES="${ENTRIES} ${1}"
-  else
-    ENTRIES="${1}"
+  NEW_ENTRY="${1}"
+  entries_find_one "${NEW_ENTRY}"
+  IS_NOT_UNIQUE=$?
+  if [ "$IS_NOT_UNIQUE" == "0" ]; then
+    entries_render_one "${NEW_ENTRY}" 1
+    return 1
   fi
+
+  if [ -n "$ENTRIES" ]; then
+    ENTRIES="${ENTRIES} ${NEW_ENTRY}"
+  else
+    ENTRIES="${NEW_ENTRY}"
+  fi
+}
+
+entries_find_one()
+{
+  IS_FOUND=1
+  TARGET_ENTRY="${1}"
+  GREP_RESULT=`grep -i "${TARGET_ENTRY}" <<< "${ENTRIES}"`
+  if [ -n "$GREP_RESULT" ]; then
+    IS_FOUND=0
+  fi
+  return "${IS_FOUND}"
 }
