@@ -27,3 +27,11 @@ entries_show_all()
   echo
 }
 
+entries_add()
+{
+  if [ -n "$ENTRIES" ]; then
+    ENTRIES="${ENTRIES} ${1}"
+  else
+    ENTRIES="${1}"
+  fi
+}

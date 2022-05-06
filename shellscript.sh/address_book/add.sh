@@ -51,7 +51,7 @@ add_take_input()
     fi
   done
 
-  echo "${FIRST_NAME}:${LAST_NAME}:${EMAIL}:${PHONE}"
+  NEW_ENTRY="${FIRST_NAME}:${LAST_NAME}:${EMAIL}:${PHONE}"
 }
 
 add_validate_input()
@@ -70,12 +70,20 @@ add_show_validation_message()
 
 add_new()
 {
-  
+  entries_add "$1" 
+}
+
+add_confirmation()
+{
+  echo "You have successfully added the following entry:"
+  entries_render_one "${NEW_ENTRY}" 1
 }
 
 ### Main function.
 add()
 {
+  NEW_ENTRY=""
   add_take_input
   add_new "$NEW_ENTRY"
+  add_confirmation "$NEW_ENTRY"
 }
