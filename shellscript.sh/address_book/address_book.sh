@@ -2,6 +2,7 @@
 
 . entries.sh
 . search.sh
+. add.sh
 
 ### Functions
 show_options()
@@ -33,7 +34,7 @@ take_input()
 
 validate_input()
 {
-  case "$1" in
+  case $1 in
 	[1-5])
           return 0;;
   	*)
@@ -48,7 +49,7 @@ process_input()
  	2) add;;
 	3) remove;;
 	4) edit;;
-        5) exit_app;;
+  5) exit_app;;
   esac
 }
 
