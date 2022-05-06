@@ -34,6 +34,7 @@ entries_add()
   IS_NOT_UNIQUE=$?
   if [ "$IS_NOT_UNIQUE" == "0" ]; then
     entries_render_one "${NEW_ENTRY}" 1
+    echo "Duplicate entry detected, cancelling \"Add\" Operation..."
     return 1
   fi
 

@@ -75,7 +75,12 @@ add_new()
 
 add_confirmation()
 {
-  echo "You have successfully added the following entry:"
+  IS_SUCCESSFUL=$?
+  if [ "${IS_SUCCESSFUL}" = "0" ]; then
+    echo "You have successfully added the following entry:"
+  else
+    echo "You have failed to add the following entry:"
+  fi 
   entries_render_one "${NEW_ENTRY}" 1
 }
 
