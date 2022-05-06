@@ -3,6 +3,7 @@
 . entries.sh
 . search.sh
 . add.sh
+. removal.sh
 
 ### Functions
 show_options()
